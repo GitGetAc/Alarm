@@ -1,12 +1,13 @@
 object Form2: TForm2
-  Left = 2153
-  Height = 319
-  Top = 421
+  Left = 1800
+  Height = 321
+  Top = 429
   Width = 388
-  Caption = 'Form2'
-  ClientHeight = 319
+  Caption = 'Alarm'
+  ClientHeight = 321
   ClientWidth = 388
   OnShow = FormShow
+  Position = poMainFormCenter
   SnapOptions.SnapToMonitor = True
   SnapOptions.SnapToForms = True
   LCLVersion = '3.2.0.0'
@@ -67,7 +68,7 @@ object Form2: TForm2
     )
     ItemHeight = 15
     TabOrder = 1
-    OnSelectionChange = HoursListSelectionChange
+    OnSelectionChange = HoursMinutesListSelectionChange
   end
   object MinutesList: TListBox
     Left = 229
@@ -138,7 +139,7 @@ object Form2: TForm2
     )
     ItemHeight = 15
     TabOrder = 2
-    OnSelectionChange = HoursListSelectionChange
+    OnSelectionChange = HoursMinutesListSelectionChange
   end
   object HoursLabel: TLabel
     Left = 64

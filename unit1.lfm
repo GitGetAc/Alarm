@@ -1,24 +1,26 @@
 object Form1: TForm1
-  Left = 1898
-  Height = 378
-  Top = 9
-  Width = 645
+  Left = 1708
+  Height = 370
+  Top = 18
+  Width = 697
+  Anchors = [akTop]
   Caption = 'Alarm'
-  ClientHeight = 378
-  ClientWidth = 645
+  ClientHeight = 370
+  ClientWidth = 697
   Font.CharSet = ANSI_CHARSET
   Font.Pitch = fpVariable
   Font.Quality = fqDraft
   OnClose = FormClose
   OnCreate = FormCreate
   OnWindowStateChange = FormWindowStateChange
+  Position = poDesktopCenter
   SnapOptions.SnapToMonitor = True
   SnapOptions.SnapToForms = True
   LCLVersion = '3.2.0.0'
   object TimeRightNowLabel: TLabel
-    Left = 392
+    Left = 408
     Height = 18
-    Top = 40
+    Top = 56
     Width = 210
     Alignment = taCenter
     AutoSize = False
@@ -30,9 +32,9 @@ object Form1: TForm1
     ParentFont = False
   end
   object TimeLabel: TLabel
-    Left = 392
+    Left = 408
     Height = 48
-    Top = 80
+    Top = 96
     Width = 210
     Alignment = taCenter
     AutoSize = False
@@ -46,9 +48,9 @@ object Form1: TForm1
     ParentFont = False
   end
   object DateLabel: TLabel
-    Left = 392
+    Left = 408
     Height = 18
-    Top = 144
+    Top = 160
     Width = 210
     Alignment = taCenter
     AutoSize = False
@@ -60,9 +62,9 @@ object Form1: TForm1
     ParentFont = False
   end
   object AlarmsList: TListBox
-    Left = 22
-    Height = 301
-    Top = 16
+    Left = 8
+    Height = 312
+    Top = 8
     Width = 321
     Font.CharSet = ANSI_CHARSET
     Font.Height = -13
@@ -75,12 +77,11 @@ object Form1: TForm1
     TabOrder = 0
   end
   object btnAdd: TBitBtn
-    Left = 22
+    Left = 8
     Height = 28
-    Top = 338
+    Top = 330
     Width = 124
     Caption = 'Add'
-    Font.CharSet = ANSI_CHARSET
     Glyph.Data = {
       42020000424D4202000000000000420000002800000010000000100000000100
       100003000000000200006400000064000000000000000000000000F80000E007
@@ -103,13 +104,12 @@ object Form1: TForm1
       000000000000
     }
     OnClick = btnAddClick
-    ParentFont = False
     TabOrder = 1
   end
   object btnRemove: TBitBtn
-    Left = 219
+    Left = 205
     Height = 28
-    Top = 338
+    Top = 330
     Width = 124
     Caption = 'Remove'
     Glyph.Data = {
@@ -151,16 +151,35 @@ object Form1: TForm1
     OnClick = btnRemoveClick
     TabOrder = 2
   end
+  object ClockChanger: TButton
+    Left = 144
+    Height = 28
+    Top = 330
+    Width = 50
+    Caption = 'D'
+    TabOrder = 3
+    OnClick = ClockChangerClick
+  end
+  object AnalogPanel: TPanel
+    Left = 336
+    Height = 350
+    Top = 8
+    Width = 350
+    BevelOuter = bvNone
+    TabOrder = 4
+    Visible = False
+  end
   object Timer1: TTimer
+    Interval = 200
     OnTimer = Timer1Timer
-    Left = 480
-    Top = 208
+    Left = 24
+    Top = 256
   end
   object TrayIcon1: TTrayIcon
     BalloonFlags = bfWarning
     BalloonHint = 'Alarm'
     BalloonTimeout = 5000
-    BalloonTitle = 'AlarmAlarm'
+    BalloonTitle = 'Alarm'
     Icon.Data = {
       7E04000000000100010010100000010020006804000016000000280000001000
       0000200000000100200000000000000400006400000064000000000000000000
@@ -200,10 +219,10 @@ object Form1: TForm1
       0000000000000000000000000000000000000000000000000000000000000000
       0000
     }
-    Hint = 'Alarm'
+    Hint = 'AlarmClock'
     Visible = True
     OnClick = TrayIcon1Click
-    Left = 584
-    Top = 320
+    Left = 280
+    Top = 256
   end
 end

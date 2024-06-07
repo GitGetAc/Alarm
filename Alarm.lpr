@@ -1,4 +1,4 @@
-program project1;
+program Alarm;
 
 {$mode objfpc}{$H+}
 
@@ -10,17 +10,19 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, unit1, unit2
+  Forms, Unit1, Unit2, Unit3
   { you can add units after this };
 
 {$R *.res}
 
 begin
   RequireDerivedFormResource:=True;
+  Application.Title:='Alarm';
   Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TForm2, Form2);
+  Application.CreateForm(TForm3, Form3);
   Application.Run;
 end.
 

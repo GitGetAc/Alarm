@@ -1,0 +1,12 @@
+object Form3: TForm3
+  Left = 2198
+  Height = 350
+  Top = 430
+  Width = 350
+  BorderStyle = bsNone
+  Caption = 'Form3'
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  LCLVersion = '3.2.0.0'
+  Visible = True
+end

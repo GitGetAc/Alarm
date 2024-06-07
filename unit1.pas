@@ -5,7 +5,7 @@ unit Unit1;
 interface
 
 uses
-  SysUtils, Forms, Controls, Dialogs, StdCtrls, ExtCtrls, Buttons, Unit2;
+  SysUtils, Forms, Controls, Dialogs, StdCtrls, ExtCtrls, Buttons, Unit2, Unit3, Classes;
 
 type
 
@@ -13,8 +13,10 @@ type
 
   TForm1 = class(TForm)
     AlarmsList: TListBox;
+    AnalogPanel : TPanel;
     btnAdd: TBitBtn;
     btnRemove: TBitBtn;
+    ClockChanger : TButton;
     Timer1: TTimer;
     TimeRightNowLabel: TLabel;
     TimeLabel: TLabel;
@@ -22,6 +24,7 @@ type
     TrayIcon1: TTrayIcon;
     procedure btnAddClick(Sender: TObject);
     procedure btnRemoveClick(Sender: TObject);
+    procedure ClockChangerClick(Sender : TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormWindowStateChange(Sender: TObject);
@@ -54,6 +57,9 @@ begin
   //Show current date
   DateLabel.Caption:= FormatDateTime('dddd, dd.mmmm.yyyy', Date);
 
+  //Drawing the analog clock
+  Form3.UpdateAnalogClock;
+
   //Get the current timestamp to compare with each alarm time
   //********This FormatDateTime contains only the  time part of the DateTime
   //(if we want to have dates too to check that further down the app date part must be provided also)
@@ -75,10 +81,11 @@ begin
         AlarmsList.Items.Delete(i);
 
         //We show a baloontip
+        TrayIcon1.BalloonHint:= AlarmData[0] + ' --- ' + AlarmData[1];
         TrayIcon1.ShowBalloonHint;
 
         //We show the alarm message
-        ShowMessage('Alarm rings!'#13#10#13#10
+        ShowMessage('ALARM!'#13#10#13#10
                   + 'Alarm time: ' + AlarmData[0] + #13#10
                   + 'Alarm hint: ' + AlarmData[1]);
       end;
@@ -119,6 +126,24 @@ begin
   AlarmsList.DeleteSelected;
 end;
 
+procedure TForm1.ClockChangerClick(Sender : TObject);
+begin
+  if AnalogPanel.Visible then
+  begin
+    AnalogPanel.Visible := False;
+    TimeRightNowLabel.Visible := True;
+    TimeLabel.Visible := True;
+    DateLabel.Visible := True
+   end
+   else
+    begin
+    AnalogPanel.Visible := True;
+    TimeRightNowLabel.Visible := False;
+    TimeLabel.Visible := False;
+    DateLabel.Visible := False;
+    end;
+end;
+
 procedure TForm1.FormWindowStateChange(Sender: TObject);
 begin
   //If minimized, make form invisible
@@ -133,12 +158,5 @@ begin
   //Above command does not make the form automatically visible, so we need to make it visible
   Visible:= True;
 end;
-end.
 
-//Todo: Write a check in formcreate if there is/isnot a alarmlist.dat file on the first run. (The program throws an exception otherwise)
-//ToDo: TrayIcon popupmenu implementalasa
-//Baloon work!! Fill the notification with relevant info :)
-//Todo: Add Alarmsound
-//Todo: Form2 Add year, mounth, day listboxes/options
-//Change showmessage to a more advanced dialog with extra formatting options
-//Todo: Merge this project with the Analogue clock and eventually the notetaking app
+end.

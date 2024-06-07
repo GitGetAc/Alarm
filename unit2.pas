@@ -25,7 +25,7 @@ type
     procedure btnCancelClick(Sender: TObject);
     procedure btnOKClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure HoursListSelectionChange(Sender: TObject; User: boolean);
+    procedure HoursMinutesListSelectionChange(Sender : TObject; User : Boolean);
   private
 
   public
@@ -73,7 +73,7 @@ begin
   ModalResult:= mrCancel;
 end;
 
-procedure TForm2.HoursListSelectionChange(Sender: TObject; User: boolean);
+procedure TForm2.HoursMinutesListSelectionChange(Sender: TObject; User: Boolean);
 begin
   TimeSelectedLabel.Caption:= HoursList.GetSelectedText + ':'
                     + MinutesList.GetSelectedText;
